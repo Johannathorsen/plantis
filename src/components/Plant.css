@@ -1,0 +1,27 @@
+.Plant {
+    background-color: #b9ceb9;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.Plant .species {
+    font-size: 1em;
+    font-style: italic;
+}
+
+.Plant .acquired {
+    font-size: 1em;
+    margin: 0.2em;
+}
+
+.Plant .date {
+    text-align: left;
+    font-size: 1.2em;
+    margin-left: 16px;
+}
+
+.Plant .item {
+    background-color: white;
+    padding: 10px;
+    margin: 8px 16px;
+}
