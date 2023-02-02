@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/plantis/static/css/main.f4dd0526.css",
-    "main.js": "/plantis/static/js/main.5f28e018.js",
+    "main.js": "/plantis/static/js/main.e6702a8e.js",
     "static/js/787.28cb0dcd.chunk.js": "/plantis/static/js/787.28cb0dcd.chunk.js",
     "static/media/roboto-all-500-normal.woff": "/plantis/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/plantis/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
@@ -38,11 +38,11 @@
     "static/media/roboto-greek-ext-700-normal.woff2": "/plantis/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/plantis/index.html",
     "main.f4dd0526.css.map": "/plantis/static/css/main.f4dd0526.css.map",
-    "main.5f28e018.js.map": "/plantis/static/js/main.5f28e018.js.map",
+    "main.e6702a8e.js.map": "/plantis/static/js/main.e6702a8e.js.map",
     "787.28cb0dcd.chunk.js.map": "/plantis/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f4dd0526.css",
-    "static/js/main.5f28e018.js"
+    "static/js/main.e6702a8e.js"
   ]
 }
