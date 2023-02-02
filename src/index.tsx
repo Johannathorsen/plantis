@@ -12,6 +12,15 @@ import reportWebVitals from './reportWebVitals';
 import PlantGallery from './components/PlantGallery';
 import Plant from './components/Plant';
 
+export type Plant = {
+  id?: string;
+  name?: string;
+  species?: string;
+  from?: string;
+  acquired?: string;
+  image?: string;
+};
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

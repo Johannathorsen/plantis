@@ -5,25 +5,19 @@ import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
+import { Plant as PlantType } from './PlantGallery';
 
-const initialPlant = {name: 'Berit', species: 'Monstera deliciosa', from: 'Julia', acquired: '20 maj'};
-const initalTreatments = [{
-  events: {
-      water: true,
-      nutrition: false
-  },
-  text: 'Flyttade till vardagsrummet'
-}];
 
 export default function Plant() {
   const { id } = useParams();
-  const [plant, setPlant ] = useState({name: '', species: '', from: '', acquired: ''});
-  const [treatments, setTreatments ] = useState([{events: {water: false, nutrition: false}, text: ''}]);
+  const [plant, setPlant ] = useState<PlantType>({});
+  // const [treatments, setTreatments ] = useState([{events: {water: false, nutrition: false}, text: ''}]);
 
   useEffect(() => {
-    setPlant(initialPlant);
-    setTreatments(initalTreatments)
-    }, [initialPlant, initalTreatments] )
+    fetch(`https://raw.githubusercontent.com/Johannathorsen/plantis/main/data/${id}/plant.json?ref=main`).then((res)=>res.json()).then((data: PlantType)=> {
+      setPlant(data);
+    });
+    }, [id] )
 
   return (
     <div className="Plant">
