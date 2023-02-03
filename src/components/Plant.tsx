@@ -8,25 +8,16 @@ import Stack from '@mui/material/Stack';
 import { Plant as PlantType } from './PlantGallery';
 
 type Image = {
-  name: string,
-  download_url: string,
+  caption: string,
+  media_url: string,
+  timestamp: string,
 }
-
-type Treatment = {
-  events?: {
-    water?: boolean,
-    nutrition?: boolean,
-  },
-  text?: string
-};
-
-type Treatments = Record<string, Treatment>;
 
 export default function Plant() {
   const { id } = useParams();
   const [plant, setPlant ] = useState<PlantType>({});
-  const [treatments, setTreatments ] = useState<Treatments>({});
   const [images, setImages] = useState<Record<string, string>>({})
+  const [sortedList, setSortedList] = useState();
 
   useEffect(() => {
     fetch(`https://raw.githubusercontent.com/Johannathorsen/plantis/main/data/${id}/plant.json?ref=main`).then((res)=>res.json()).then((data: PlantType)=> {
@@ -35,16 +26,14 @@ export default function Plant() {
     }, [id] )
 
   useEffect(() => {
-    fetch(`https://raw.githubusercontent.com/Johannathorsen/plantis/main/data/${id}/treatments.json?ref=main`).then((res)=>res.json()).then((data: Treatments)=> {
-      setTreatments(data);
-    });
-    }, [id] )
-
-  useEffect(() => {
-    fetch(`https://api.github.com/repos/johannathorsen/plantis/contents/data/${id}/images?ref=main`).then((res)=>res.json()).then((data)=> {
+    fetch(`https://graph.instagram.com/me/media?fields=media_url,timestamp,caption`).then((res)=>res.json()).then((data)=> {
       const images = {} as Record<string, string>;
-      data.forEach((image: Image) => {
-        images[image.name] = image.download_url
+      data.data.forEach((image: Image) => {
+        console.log(image);
+        if (image.caption.startsWith(id!)) {
+          console.log('match');
+          images[image.timestamp] = image.media_url;
+        }
       })
       setImages(images);
     });
@@ -58,7 +47,7 @@ export default function Plant() {
       <Box sx={{ width: '100%' }}>
         <Stack spacing={2}>
           <h3 className="date">10 augusti 2022</h3>
-          <Paper className="item">{JSON.stringify(treatments)}</Paper>
+          <Paper className="item">hello</Paper>
           {
             Object.entries(images).map(([id, url]) => {
               return (
@@ -78,3 +67,14 @@ export default function Plant() {
     </div>
   );
 }
+/*
+{
+  "2011-04-11T10:20:31Z": {
+      "events": {
+          "water": true,
+          "nutrition": false
+      },
+      "text": "Flyttade till vardagsrummet"
+  }
+}
+*/

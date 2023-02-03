@@ -5,33 +5,24 @@ import '@fontsource/roboto/700.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import PlantGallery from './components/PlantGallery';
 import Plant from './components/Plant';
 
-export type Plant = {
-  id?: string;
-  name?: string;
-  species?: string;
-  from?: string;
-  acquired?: string;
-  image?: string;
-};
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route index element={<PlantGallery />} />
         <Route path={"/:id"} element={<Plant />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 
